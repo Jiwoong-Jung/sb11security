@@ -82,11 +82,15 @@ public class SecurityConfig {
                         response.sendRedirect("/login"))
                 // 로그아웃 시 쿠키 삭제 설정 (예: "remember-me" 쿠키 삭제)
                 .deleteCookies("remember-me")
+
         );
 
         http.oauth2Login().successHandler(successHandler());
 
         http.rememberMe().tokenValiditySeconds(60*60*24*7).userDetailsService(userDetailsService);
+
+        http.exceptionHandling()
+                .accessDeniedPage("/sample/accessDenied");
 
         return http.build();
     }

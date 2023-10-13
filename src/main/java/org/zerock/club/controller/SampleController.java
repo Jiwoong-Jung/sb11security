@@ -30,6 +30,11 @@ public class SampleController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @GetMapping("/accessDenied")
+    public void accessDenied() {
+
+    }
+
     @GetMapping("/all")
     public void exAll(){
         log.info("exAll..........");
